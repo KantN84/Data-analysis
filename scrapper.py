@@ -11,7 +11,7 @@ def fetch_vinted_items(query=["32"], pages=1, country = "fr"):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Accept": "application/json, text/plain, */*",
-        "Referer": "https://www.vinted.fr/"
+        "Referer": f"https://www.vinted.{country}/"
     }
     session.headers.update(headers)
 
@@ -143,7 +143,7 @@ if __name__ == "__main__":
     country = ["de", "fr", "es", "com", "it", "nl", "be", "pt", "at", "pl", "cz", "lu", "dk", "ee", "se", "gr", "ie", "hr", "co.uk", "sk", "si", "ro", "lv", "lt", "hu"]
     country2 = ["fr"]
     for ctry in country:
-        resultats = fetch_vinted_items(query=liste, pages=10, country=ctry)  # Ajouter d'autres pays si nécessaire
+        resultats = fetch_vinted_items(query=liste, pages=1, country=ctry)  # Ajouter d'autres pays si nécessaire
         total = len(resultats) if resultats else 0
         print(f"\nTotal articles récupérés : {total}")
         # Écrire les résultats dans le fichier vinted_products_api.jsonl (ajout sans doublons)
